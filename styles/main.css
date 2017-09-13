@@ -1,0 +1,493 @@
+@import "../fonts/Fira/fira.css";
+
+
+* {
+  box-sizing: border-box;
+  text-rendering: optimizelegibility;
+}
+
+::-moz-selection {
+  background: rgba(0, 0, 0,0.25);
+}
+::selection {
+  background: rgba(0, 0, 0,0.25);
+}
+
+body {
+  background-color: #fafafa;
+  color: #444;
+  margin: 0 auto;
+  padding: 0;
+  font-family:  'Fira Mono', monospace;
+  font-weight: 400;
+  font-size: 120%;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+}
+a:hover {
+  color: #FF3E51;
+}
+/************************************************************************
+                      LAYOUT STYLES
+************************************************************************/
+
+header {
+  font-size:  .8em;
+}
+header .path {
+  max-width: 55rem;
+  padding: 1rem 3rem;
+  margin: 0 auto 4rem;
+}
+
+header a + a::before {
+  content: '•';
+  color: #FF3E51;
+}
+
+/************************************************************************
+                      DROPDOWN NAVIGATION
+************************************************************************/
+
+nav.topNav {
+  position: relative;
+  max-width:480px;
+  margin: 2rem auto;
+  padding: 0 3rem;
+  color: white;
+}
+
+
+select {
+  display: inline-block;
+  width: 100%;
+
+  border:none;
+  border: 4px solid #353535;
+  margin: 0;
+  padding: .5rem 1rem;
+
+  font-size: 2rem;
+  line-height: 1.2;
+
+  outline:none; /* remove focus ring from Webkit */
+
+  color: inherit;
+  background: #353535;
+  cursor: pointer;
+
+  -webkit-appearance:none; /* remove the strong OSX influence from Webkit */
+}
+
+/* Select arrow styling */
+nav.topNav::after {
+  content: "↓";
+  position: absolute;
+  font-family:  'Fira Mono';
+  top: 0;
+  right: 3rem;
+  bottom: 0;
+  font-size:  2em;
+  line-height: 65px;
+  padding: 0 10px;
+  color: inherit;
+  z-index:  10;
+
+  pointer-events:none;
+}
+
+
+/************************************************************************
+                      EDIT BUTTON
+************************************************************************/
+
+.button {
+  display: block;
+  width: 54px;
+  height: 54px;
+
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+
+  background-color: #FF3E51;
+  border-radius: 50%;
+  color: white;
+
+  box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+
+}
+.svg-icon {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  transition: transform .4s ease-out;
+}
+
+.button_edit {
+  z-index: 1500;
+}
+.button_edit .svg-icon:hover {
+  transform:rotate(90deg);
+}
+
+.svg-icon path {
+  fill: white;
+}
+
+/************************************************************************
+                      SECTION (content)
+************************************************************************/
+
+section {
+}
+
+#content {
+  max-width: 55rem;
+  padding: 1rem 3rem;
+  margin: 0 auto 8rem;
+  counter-reset: h2;
+}
+
+section a {
+  border-bottom: 2px solid #FF3E51;
+}
+h3, p, ul, ol {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+p, ul, ol {
+  margin-top: 1.5rem;
+  margin-bottom:  1.5rem;
+}
+
+li {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+.dont-break-out {
+
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
+}
+
+#content ol { counter-reset: item; }
+#content ol li { display: block; position: relative; }
+#content ol li::before {
+  content: counter(item) ". ";
+  counter-increment: item;
+  color: #4691f6;
+  position: absolute;
+  left: -1.3em;
+  font-family: 'Fira Mono', monospace;
+}
+
+
+
+p:empty {
+  margin-bottom: 1rem;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin:0 auto;
+  border: 4px solid #ddd;
+  background-color: #ddd;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  position: relative;
+  font-size:  2rem;
+  line-height: 1.2;
+  text-transform: lowercase;
+
+  margin-top:   4rem;
+  margin-bottom: 4rem;
+  padding: .5rem 1.5rem;
+
+  background-color: #353535;
+  color: white;
+}
+
+h2::before {
+  counter-increment: h2;
+  content: counter(h2);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 100%;
+  font-family: 'Fira Mono';
+  font-size:  8rem;
+  line-height:  1;
+  padding-right:  3rem;
+  color: #353535;
+}
+
+
+b {
+  color: #4691f6;
+  font-weight: 600;
+}
+
+u {
+  text-decoration: none;
+  color: #4BC0B4;
+  border-bottom:  2px solid #4BC0B4;
+}
+
+
+hr { width: 40%; max-width: 16em; margin: 4em auto; }
+
+ul.code, code, code.hljs {
+  font-family: 'Fira Mono';
+  list-style:none;
+  border: none;
+  border-left: 3px solid #4BC0B4;
+  font-size: 1rem;
+
+  padding:1rem 1rem;
+  margin: 2em 0px 2em;
+
+  background-color: #f3f3f3;
+  color:#333333;
+
+}
+@media screen and (min-width: 70em) {
+  ul.code, code, code.hljs {
+/*
+    margin-left:  -50px;
+    margin-right: -50px;
+*/
+  }
+}
+
+.iframeContainer {
+  position: relative;
+  width: 100%;
+  height: 512px;
+  overflow: hidden;
+}
+.iframeContainer iframe {
+  width:100%;
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* comments are only on the hackpad page (removed in JS) */
+ul.comment {
+  list-style: none;
+  color: #FF3E51;
+  padding: 0 1rem;
+  margin: 0rem;
+  border-left: 3px solid #FF3E51;
+}
+
+.text-pre {
+  font-family: 'Fira Mono';
+  font-size: 1rem;
+  background-color: #f3f3f3;
+  color: #333333;
+  border-radius: 3px;
+  border: none;
+  padding: .3rem;
+}
+
+table {
+  font-family: 'Fira Mono';
+  list-style: none;
+  border: none;
+  font-size: .9rem !important;
+  line-height: 1.3;
+  padding: 1rem 1rem;
+  margin: 2em 0px 2em;
+  background-color: #f3f3f3;
+  color: #333333;
+}
+
+td {
+  padding: 8px !important;
+  line-height: inherit !important;
+}
+
+tr:first-child {
+  font-weight:  700;
+}
+
+
+/************************************************************************
+                      SIDE-NAVIGATION
+************************************************************************/
+
+
+.scroll-nav {
+  position: relative;
+  font-size:  .8em;
+
+
+  // For Google Chrome
+  ::-webkit-scrollbar {
+      width:  5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: #ccc;
+  }
+
+  ::-webkit-scrollbar-track {
+      background: transparent;
+  }
+
+  // For Internet Explorer
+  scrollbar-face-color: #ccc;
+  scrollbar-track-color: transparent;
+
+}
+
+.scroll-nav__wrapper {
+  padding: 5px 0; margin: 0;
+  background-color: #353535;
+  color: #fff;
+  z-index:  1;
+  border-radius: 5px;
+}
+.scroll-nav__wrapper a {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: color .3s ease;
+}
+
+.scroll-nav__heading {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 1em;
+  background-color: #fafafa;
+  color: #353535;
+
+  margin: 0 5px;
+  padding: 5px;
+  text-align: center;
+  font-weight:  700;
+}
+.scroll-nav__list {
+  margin: 5px;
+  padding: 10px 15px;
+}
+
+.scroll-nav__item {
+  margin: 0 auto;
+}
+.scroll-nav__item.active > a {
+  color: #4691f6;
+}
+.scroll-nav__item a:hover {
+  color: #FF3E51;
+}
+
+.scroll-nav__sub-list {
+  margin: 0;
+  padding-left:   1rem;
+  list-style: none;
+}
+
+
+.scroll-nav__sub-item {
+  margin: 0;
+  padding-left: 1em;
+}
+
+.scroll-nav__sub-item.active > a {
+  color: #4691f6;
+}
+.scroll-nav__sub-item:hover > a {
+  color: #FF3E51;
+}
+
+.scroll-nav__link, .scroll-nav__sub-link {
+  display: block;
+  margin: 0 auto;
+  padding-left: 0;
+}
+.scroll-nav__link:hover {
+}
+
+@media screen and (min-width: 60em) {
+
+  .scroll-nav {
+    position: absolute;
+    right: 0;
+  }
+
+  .scroll-nav.fixed .scroll-nav__wrapper:not(:hover) {
+/*     color: #999; */
+  }
+
+  .scroll-nav.fixed .scroll-nav__wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
+
+  .scroll-nav__wrapper {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
+    transition: width .6s ease-in-out, right 1s;
+  }
+
+  .scroll-nav__list {
+    max-height: 85vh;
+    overflow: auto;
+  }
+}
+
+@media screen and (min-width: 60em) and (max-width: 90em) {
+
+  .scroll-nav:not(:hover) .scroll-nav__wrapper {
+    width:150px;
+  }
+
+}
+
+
+/************************************************************************
+                      CUSTOM TEMPLATES
+************************************************************************/
+
+.page-references {
+
+
+}
+
